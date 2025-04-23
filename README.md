@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Live Image Recognition with Next.js and Ollama
+
+This is a full-stack Next.js application that uses your webcam to capture images and analyze them using a local Ollama vision model.
+
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or later)
+- [Ollama](https://ollama.ai/) installed and running locally
+- A vision-capable model pulled in Ollama (e.g., llava:latest, llama3-vision, moondream)
+
+## Setup Ollama
+
+1. Install Ollama by following the instructions at [https://ollama.ai/](https://ollama.ai/)
+2. Pull a vision-capable model:
+   ```bash
+   ollama pull llava:latest
+   # or
+   ollama pull llama3-vision
+   # or
+   ollama pull moondream
+   ```
+3. Make sure Ollama is running on your machine (it should run on http://localhost:11434)
 
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How to Use
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Allow camera access when prompted by your browser
+2. Click the "Capture Photo" button to take a photo
+3. Click "Recognize Objects" to send the image to Ollama for analysis
+4. View the AI-generated description of your image
 
-## Learn More
+## Configuration
 
-To learn more about Next.js, take a look at the following resources:
+- The default model is set to `llava:latest`. You can change this in `lib/ollamaApi.ts`
+- The API endpoint for Ollama is set to `http://localhost:11434/api/generate`. Adjust this if your Ollama instance is running elsewhere
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Troubleshooting
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- If you encounter CORS issues, make sure your Ollama server is configured to accept requests from your Next.js app
+- If the webcam doesn't appear, check that you've granted camera permissions in your browser
+- If the AI doesn't respond, ensure that Ollama is running and that you've pulled a vision-capable model
 
-## Deploy on Vercel
+## Technologies Used
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Next.js with TypeScript
+- React Webcam for camera access
+- Axios for API calls
+- Tailwind CSS for styling
+- Ollama for local AI vision model inference
