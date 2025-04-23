@@ -1,5 +1,3 @@
-# Live Image Recognition with Next.js and Ollama
-
 This is a full-stack Next.js application that uses your webcam to capture images and analyze them using a local Ollama vision model.
 
 ## Prerequisites
@@ -13,11 +11,9 @@ This is a full-stack Next.js application that uses your webcam to capture images
 1. Install Ollama by following the instructions at [https://ollama.ai/](https://ollama.ai/)
 2. Pull a vision-capable model:
    ```bash
-   ollama pull llava:latest
-   # or
-   ollama pull llama3-vision
-   # or
-   ollama pull moondream
+   ollama pull <the vision model you prefer>
+   
+   gemma3 [4b-27b] or llama3.2 or llava:latest
    ```
 3. Make sure Ollama is running on your machine (it should run on http://localhost:11434)
 
@@ -33,25 +29,17 @@ This is a full-stack Next.js application that uses your webcam to capture images
    npm run dev
    ```
 
-3. Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
-
 ## How to Use
 
 1. Allow camera access when prompted by your browser
 2. Click the "Capture Photo" button to take a photo
 3. Click "Recognize Objects" to send the image to Ollama for analysis
-4. View the AI-generated description of your image
 
 ## Configuration
 
-- The default model is set to `llava:latest`. You can change this in `lib/ollamaApi.ts`
+- The default model is set to `gemma3:4b`. You can change this in `lib/ollamaApi.ts`
 - The API endpoint for Ollama is set to `http://localhost:11434/api/generate`. Adjust this if your Ollama instance is running elsewhere
 
-## Troubleshooting
-
-- If you encounter CORS issues, make sure your Ollama server is configured to accept requests from your Next.js app
-- If the webcam doesn't appear, check that you've granted camera permissions in your browser
-- If the AI doesn't respond, ensure that Ollama is running and that you've pulled a vision-capable model
 
 ## Technologies Used
 
