@@ -6,14 +6,8 @@ export async function POST(request: NextRequest) {
   try {
     const { image, prompt, model } = await request.json();
 
-    // if (!image) {
-    //   return NextResponse.json(
-    //     { success: false, error: 'No image provided' },
-    //     { status: 400 }
-    //   );
-    // }
 
-    // Call Ollama API with the image
+    // Calling the api
     const description = await recognizeImage(
       image,
       prompt || 'Describe what you see in this image',
