@@ -1,5 +1,9 @@
 This is a full-stack Next.js application that uses your webcam to capture images and analyze them using a local Ollama vision model.
 
+##Preview
+<img src="public/1.jpeg" alt="Webcam capture" width="600" />
+<img src="public/2.jpeg" alt="Result" width="600" />
+
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) (v18 or later)
